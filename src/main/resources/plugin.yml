@@ -1,10 +1,10 @@
 name: "FeedMe2"
-version: "1.0"
+version: "1.1"
 main: com.mw.feedme2.FeedMe2
 api-version: "1.20"
 
 commands:
   feedme:
     description: Access the FeedMe game
-    usage: "/<command> <start | stop | pause | resume>"
+    usage: "/<command> <start | stop | pause | resume | setlives>"
     permission: feedme

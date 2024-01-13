@@ -43,6 +43,8 @@ public final class Config
     public static final String STR_RESUMED = "§6%s §fresumed the game";
     public static final String STR_ALREADY_PAUSED = "The game is already paused";
     public static final String STR_ALREADY_RESUMED = "The game is already running";
+    public static final String STR_UNKNOWN_PLAYER = "Couldn't find player §6%s";
+    public static final String STR_SET_LIVES = "§6%s §fset §6%s§f's lives to §c%d";
 
 
     public static final ArrayList<ArrayList<ConfigCollectable>> collectableTiers = new ArrayList<>();

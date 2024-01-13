@@ -1,9 +1,6 @@
 package com.mw.feedme2.commands;
 
-import com.mw.feedme2.commands.subcommands.PauseCommand;
-import com.mw.feedme2.commands.subcommands.ResumeCommand;
-import com.mw.feedme2.commands.subcommands.StartCommand;
-import com.mw.feedme2.commands.subcommands.StopCommand;
+import com.mw.feedme2.commands.subcommands.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -24,7 +21,8 @@ public class BaseCommand implements CommandExecutor, TabCompleter
                 new StartCommand(),
                 new StopCommand(),
                 new PauseCommand(),
-                new ResumeCommand()
+                new ResumeCommand(),
+                new SetLivesCommand()
         };
 
         for(SubCommand s : subCommands)
@@ -58,11 +56,11 @@ public class BaseCommand implements CommandExecutor, TabCompleter
     {
         if(args == null || args.length == 1)
         {
-            return new ArrayList<String>(registeredSubCommands.keySet());
+            return new ArrayList<>(registeredSubCommands.keySet());
         }
         else
         {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
     }
 }

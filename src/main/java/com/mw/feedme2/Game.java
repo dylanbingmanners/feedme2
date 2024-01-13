@@ -1,6 +1,7 @@
 package com.mw.feedme2;
 
 import com.mw.feedme2.challenges.Challenge;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -111,6 +112,39 @@ public final class Game implements ITimerListener
         else if(state != State.STOPPED)
         {
             Chat.printMessageMain(Config.STR_ALREADY_RESUMED, sender);
+        }
+        else
+        {
+            Chat.printMessageMain(Config.STR_NO_RUNNING, sender);
+        }
+    }
+
+    public void setLives(Player sender, String playerToSet, int lives)
+    {
+        if(state != State.STOPPED)
+        {
+            Player player = Bukkit.getPlayer(playerToSet);
+            if(player != null && getActivePlayers().contains(player))
+            {
+                for(PlayerStats ps : playerStats)
+                {
+                    if(ps.player.getDisplayName().equals(player.getDisplayName()))
+                    {
+                        ps.lives = lives;
+                        Chat.printSeparator();
+                        Chat.printMessageMain(String.format(Config.STR_SET_LIVES,
+                                                            sender.getDisplayName(),
+                                                            ps.player.getDisplayName(),
+                                                            ps.lives));
+                        Chat.printPlayerLives(playerStats);
+                        Chat.printSeparator();
+                    }
+                }
+            }
+            else
+            {
+                Chat.printMessageMain(String.format(Config.STR_UNKNOWN_PLAYER, playerToSet), sender);
+            }
         }
         else
         {
